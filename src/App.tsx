@@ -1,13 +1,59 @@
 import { useState } from "react";
+import { BiFork, BiKnife } from "react-icons/bi";
+import { GiSpoon } from "react-icons/gi";
+import { IoLogoFacebook, IoLogoWhatsapp } from "react-icons/io5";
+import { LiaMapMarkerAltSolid } from "react-icons/lia";
 
-const initImg = ["fried-plantain.jpg", "goat-meat.jpg", "potato.jpg"];
+interface imgObj {
+  image: string;
+  containerStyle: string;
+  imageStyle: string;
+}
+
+const initialData: Array<imgObj> = [
+  {
+    image: "fried-plantain.jpg",
+    containerStyle:
+      " rounded-full overflow-hidden border-4 border-white w-34 h-34 relative",
+    imageStyle: "h-34 w-34 object-cover",
+  },
+  {
+    image: "potato.jpg",
+    containerStyle:
+      "rounded-full overflow-hidden border-4 border-white -ml-8 z-10 relative",
+    imageStyle: "h-28 w-28 object-cover",
+  },
+  {
+    image: "goat-meat.jpg",
+
+    containerStyle:
+      " rounded-full overflow-hidden border-4 border-white -ml-8 relative",
+    imageStyle: "h-34 w-34 object-cover",
+  },
+  {
+    image: "ndole.jpg",
+    containerStyle:
+      "rounded-full overflow-hidden border-4 border-white  absolute -bottom-20 z-20 left-1/2 transform -translate-x-1/2",
+    imageStyle: "h-34 w-34 object-cover",
+  },
+];
+const services: Array<string> = [
+  "meal planning",
+  "home delivery",
+  "rental services",
+  "catering services",
+  "private shef services",
+  "meal preparation for events",
+  "customize meal preparation",
+];
 
 function App() {
-  const [imageArr, setImageArr] = useState<string[]>(initImg);
+  // const [imageArr, setImageArr] = useState<string[]>(initImg);
+  const [data, setData] = useState(initialData);
 
   const handleEditImage = (
     ev: React.ChangeEvent<HTMLInputElement>,
-    index: number
+    i: number
   ) => {
     const file = ev.target.files?.[0];
 
@@ -17,88 +63,104 @@ function App() {
       reader.onload = (e) => {
         const imgUrl = e.target?.result;
 
-        const newArr = imageArr.map((img, i) => {
-          if (i === index) return imgUrl as string;
-          return img;
+        const newData = data.map((dataObj, index) => {
+          if (i === index) return { ...dataObj, image: imgUrl };
+          return dataObj;
         });
 
-        setImageArr(newArr);
+        setData(newData as Array<imgObj>);
       };
       reader.readAsDataURL(file);
     }
   };
 
-  const handleAddImage = (ev: React.ChangeEvent<HTMLInputElement>) => {
-    const file = ev.target.files?.[0];
+  // const handleAddImage = (ev: React.ChangeEvent<HTMLInputElement>) => {
+  //   const file = ev.target.files?.[0];
 
-    if (file && file.type.startsWith("image/")) {
-      const reader = new FileReader();
+  //   if (file && file.type.startsWith("image/")) {
+  //     const reader = new FileReader();
 
-      reader.onload = (e) => {
-        const imgUrl = e.target?.result;
+  //     reader.onload = (e) => {
+  //       const imgUrl = e.target?.result;
 
-        setImageArr((cur) => [...cur, imgUrl as string]);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+  //       setImageArr((cur) => [...cur, imgUrl as string]);
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // };
 
   return (
     <>
-      <div className="max-w-[60rem] mx-auto h-svh">
-        <nav className="flex bg-slate-900">
-          <h1 className="text-white">this is the nav</h1>
-          <img
-            src="./logo.jpg"
-            className="w-40 ml-auto object-cover h-40 rounded-full"
-            alt="logo"
-          />
-        </nav>
-
-        <div className="flex items-center gap-4">
-          <div>
-            <h1>our services</h1>
-            <ul>
-              <li>home delivery</li>
-              <li>birthday ceremonies</li>
-              <li>birthday ceremonies</li>
-              <li>birthday ceremonies</li>
-            </ul>
+      <div className="bg-black mx-auto relative w-full rounded xl overflow-hidden shadow-lg  text-white h-svh sm:h-auto">
+        <div className="p-6 mb-6 text-center">
+          <div className="absolute top-6 shadow-md shadow-orange-500 rounded-full overflow-hidden md:h-28 md:w-28 flex flex-col items-center justify-center h-20 w-20   text-xs md:text-base">
+            <h1 className="font-semibold">Queen</h1>
+            <h1 className=" font-semibold">Mother's </h1>
+            <h1 className="">Cuisine</h1>
+            <div className="flex items-center justify-center gap-1 mt-2 text-orange-500">
+              <BiFork />
+              <BiKnife />
+              <GiSpoon />
+            </div>
           </div>
-          <div className="grid grid-cols-3 gap-2 my-6">
-            {imageArr.map((el, index) => {
-              return (
-                <div key={index} className="relative  max-h-40">
-                  <img
-                    src={el}
-                    alt="food image"
-                    className="h-40 w-60 object-cover rounded-md"
-                  />
-                  <input
-                    className="absolute w-full top-0 h-full z-50 opacity-0"
-                    type="file"
-                    onChange={(ev) => handleEditImage(ev, index)}
-                  />
-                </div>
-              );
-            })}
-          </div>{" "}
+          <h2 className="text-white text-sm tracking-widest font-semibold">
+            TODAY's
+          </h2>
+          <h1 className="text-4xl font-bold text-orange-500 ">Special</h1>
+          <h1 className="text-5xl font-extrabold tracking-wide ">MENU</h1>
         </div>
-        <footer className="bg-slate-800 py-4 text-white">
-          <div className="flex gap-4 mb-3">
-            <p>whatsapp: +237 675970381</p>
-            <p>email: sabipikinboyz.njaka@gmail.com</p>
+
+        <div className="relative flex items-center justify-center mb-10">
+          <div className=" relative flex justify-center items-center  ">
+            {data.map((el, index) => (
+              <div key={index} className={`${el.containerStyle}`}>
+                <img
+                  src={el.image}
+                  alt="food image"
+                  className={el.imageStyle}
+                />
+
+                <input
+                  className="absolute w-full top-0 h-full z-50  opacity-0"
+                  type="file"
+                  onChange={(ev) => handleEditImage(ev, index)}
+                />
+              </div>
+            ))}
           </div>
-          <div className="flex gap-2">
-            <label htmlFor="image">Add new image</label>
-            <input
-              onChange={handleAddImage}
-              type="file"
-              id="image"
-              className="border border-slate-300 pl-2"
-            />
-          </div>
-        </footer>
+        </div>
+
+        <div className="">
+          <h1 className="ml-4 text-orange-400 font-bold mb-2 ">Our services</h1>
+          <ul className=" text-sm tracking-wide ml-8 list-disc ">
+            {services.map((service, index) => (
+              <li key={index} className="capitalize mb-2">
+                {service}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="flex  items-center flex-col gap-4 my-8">
+          <button className=" bg-white text-black px-6 py-2 rounded-full font-bold mb-4">
+            ORDER NOW
+          </button>
+
+          {/* <div> */}
+          <p className="flex items-center gap-2 font-semibold text-xl">
+            <IoLogoWhatsapp />
+            <span>+ 237 651 103 724</span>
+          </p>
+          <p className="flex items-center gap-2">
+            <IoLogoFacebook className="text-xl" />
+            <span>Queen Mother Restaurant</span>
+          </p>
+          <p className="flex items-center gap-2">
+            <LiaMapMarkerAltSolid className="text-xl" />
+            <span>Derriere Stade Cicam (Ange Raphael)</span>
+          </p>
+          {/* </div> */}
+        </div>
       </div>
     </>
   );
