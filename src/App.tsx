@@ -77,9 +77,9 @@ function App() {
       <div className="bg-black mx-auto relative w-full overflow-hidden   text-white h-svh sm:h-auto">
         <div className="px-6 mt-4 mb-6 text-center">
           <div className="absolute top-4 shadow-md shadow-orange-500 rounded-full overflow-hidden md:h-28 md:w-28 flex flex-col items-center justify-center h-20 w-20   text-xs md:text-base">
-            <h1 className="font-semibold">Queen</h1>
-            <h1 className=" font-semibold">Mother's </h1>
-            <h1 className="">Cuisine</h1>
+            <h1 className="font-semibold text-orange-500">Queen</h1>
+            <h1 className=" font-semibold text-orange-500">Mother's </h1>
+            <h1 className="font-semibold ">Cuisine</h1>
             <div className="flex items-center justify-center gap-1 mt-2 text-orange-500">
               <BiFork />
               <BiKnife />
@@ -129,7 +129,6 @@ function App() {
             ORDER NOW
           </button>
 
-          {/* <div> */}
           <p className="flex items-center gap-2 font-semibold text-lg">
             <IoLogoWhatsapp />
             <span>+ 237 651 103 724</span>
@@ -138,7 +137,7 @@ function App() {
             <IoLogoFacebook className="text-xl" />
             <span className="font-semibold">Queen Mother Restaurant</span>
           </p>
-          <p className="flex items-center gap-2">
+          <p className="flex items-center gap-2 text-sm">
             <LiaMapMarkerAltSolid className="text-xl" />
             <span className="font-semibold">
               Derriere Stade Cicam (Ange Raphael)
