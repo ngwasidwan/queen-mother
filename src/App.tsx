@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { BiFork, BiKnife } from "react-icons/bi";
-import { GiSpoon } from "react-icons/gi";
 import { IoLogoFacebook, IoLogoWhatsapp } from "react-icons/io5";
 import { LiaMapMarkerAltSolid } from "react-icons/lia";
 
@@ -76,21 +74,20 @@ function App() {
     <>
       <div className="bg-black mx-auto relative w-full overflow-hidden   text-white h-svh sm:h-auto">
         <div className="px-6 mt-4 mb-6 text-center">
-          <div className="absolute top-4 shadow-md shadow-orange-500 rounded-full overflow-hidden md:h-28 md:w-28 flex flex-col items-center justify-center h-20 w-20   text-xs md:text-base">
-            <h1 className="font-semibold text-orange-500">Queen</h1>
-            <h1 className=" font-semibold text-orange-500">Mother's </h1>
-            <h1 className="font-semibold ">Cuisine</h1>
-            <div className="flex items-center justify-center gap-1 mt-2 text-orange-500">
-              <BiFork />
-              <BiKnife />
-              <GiSpoon />
-            </div>
+          <div className="w-28  absolute bg-red-50 rounded-full">
+            <img src="logo.jpg" alt="restaurant logo" />
           </div>
-          <h2 className="text-white text-sm tracking-widest font-semibold ">
-            TODAY's
-          </h2>
-          <h1 className="text-4xl font-bold text-orange-500 ">Special</h1>
-          <h1 className="text-5xl font-extrabold tracking-wide ">MENU</h1>
+
+          <div>
+            <h2 className="text-white text-sm tracking-widest font-semibold ">
+              TODAY's
+            </h2>
+            <h1 className="text-3xl font-bold text-yellow-500 ">Special</h1>
+
+            <h1 className="text-4xl font-extrabold tracking-wide text-green-500">
+              MENU
+            </h1>
+          </div>
         </div>
 
         <div className="relative flex items-center justify-center mb-10">
@@ -114,17 +111,17 @@ function App() {
         </div>
 
         <div className="">
-          <h1 className="ml-4 text-orange-400 font-bold mb-2 ">Our services</h1>
+          <h1 className="ml-4  text-green-500 font-bold mb-2 ">Our services</h1>
           <ul className=" text-sm tracking-wide ml-8 list-disc ">
             {services.map((service, index) => (
-              <li key={index} className="capitalize mb-2">
+              <li key={index} className="capitalize mb-1.5">
                 {service}
               </li>
             ))}
           </ul>
         </div>
 
-        <div className="flex  items-center flex-col gap-2 my-8">
+        <div className="flex  items-center flex-col gap-2 my-6">
           <button className=" bg-white text-black px-6 py-2 rounded-full font-bold mb-4">
             ORDER NOW
           </button>
