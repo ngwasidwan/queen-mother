@@ -73,20 +73,22 @@ function App() {
   return (
     <>
       <div className="bg-black mx-auto relative w-full overflow-hidden   text-white h-svh sm:h-auto">
-        <div className="px-6 mt-4 mb-6 text-center">
-          <div className="w-28  absolute bg-red-50 rounded-full">
+        <div className="px-6 mt-4 mb-6 text-center overflow-hidden relative">
+          <div className="w-28 top-0 left-2 absolute bg-red-50 rounded-full">
             <img src="logo.jpg" alt="restaurant logo" />
           </div>
 
-          <div>
-            <h2 className="text-white text-sm tracking-widest font-semibold ">
-              TODAY's
-            </h2>
-            <h1 className="text-3xl font-bold text-yellow-500 ">Special</h1>
+          <h2 className="text-white text-sm tracking-widest font-semibold ">
+            TODAY's
+          </h2>
+          <h1 className="text-3xl font-bold text-yellow-500 ">Special</h1>
 
-            <h1 className="text-4xl font-extrabold tracking-wide text-green-500">
-              MENU
-            </h1>
+          <h1 className="text-4xl font-extrabold tracking-wide text-green-500">
+            MENU
+          </h1>
+
+          <div className="w-28 right-2 absolute bg-red-50 rounded-full top-0">
+            <img src="logo.jpg" alt="restaurant logo" />
           </div>
         </div>
 
